@@ -1,0 +1,198 @@
+/* Общие стили для всех страниц (раньше были скопированы в каждый HTML) */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+}
+
+.card.wide {
+    max-width: 520px;
+}
+
+.card h2 {
+    text-align: center;
+    margin: 0 0 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+button,
+.button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+button:hover,
+.button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #9bbbe0;
+    cursor: wait;
+}
+
+button.green {
+    background-color: #28a745;
+}
+
+button.green:hover {
+    background-color: #218838;
+}
+
+.switch-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.switch-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
+
+/* Сообщение об ошибке или успехе под формой */
+.message {
+    margin: 12px 0 0;
+    font-size: 14px;
+    text-align: center;
+    min-height: 1em;
+}
+
+.message.error {
+    color: #c0392b;
+}
+
+.message.ok {
+    color: #218838;
+}
+
+/* ---------- Личный кабинет ---------- */
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.profile-row span:first-child {
+    color: #666;
+}
+
+.balance {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin: 20px 0 10px;
+}
+
+.ai-block {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.ai-answer {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f6f8fa;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+/* ---------- Транзакции ---------- */
+.tx-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.tx-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.tx-date {
+    display: block;
+    font-size: 12px;
+    color: #999;
+}
+
+.tx-plus {
+    color: #218838;
+    white-space: nowrap;
+}
+
+.tx-minus {
+    color: #c0392b;
+    white-space: nowrap;
+}
+
+.empty {
+    text-align: center;
+    color: #999;
+}

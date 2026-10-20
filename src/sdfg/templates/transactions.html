@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Транзакции</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="card wide">
+        <h2>Транзакции</h2>
+
+        <div class="balance">{{ '%.2f' | format(user['balance']) }} ₽</div>
+
+        <!-- Форма новой операции -->
+        <form id="transaction-form">
+            <div class="form-group">
+                <label for="type">Операция</label>
+                <select id="type">
+                    <option value="deposit">Пополнение</option>
+                    <option value="withdraw">Списание</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amount">Сумма, ₽</label>
+                <input type="number" id="amount" min="0.01" step="0.01" placeholder="500" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Комментарий</label>
+                <input type="text" id="description" placeholder="Необязательно">
+            </div>
+            <button type="submit" class="green">Провести операцию</button>
+            <p class="message" id="message"></p>
+        </form>
+
+        <!-- История операций из базы -->
+        {% if transactions %}
+        <ul class="tx-list">
+            {% for t in transactions %}
+            <li>
+                <span>
+                    {{ t['description'] }}
+                    <span class="tx-date">{{ t['created_at'] }}</span>
+                </span>
+                {% if t['amount'] > 0 %}
+                <span class="tx-plus">+{{ '%.2f' | format(t['amount']) }} ₽</span>
+                {% else %}
+                <span class="tx-minus">{{ '%.2f' | format(t['amount']) }} ₽</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty">Операций пока нет. Пополните баланс, чтобы начать.</p>
+        {% endif %}
+
+        <div class="switch-link">
+            <a href="{{ url_for('lk') }}">Назад в личный кабинет</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
